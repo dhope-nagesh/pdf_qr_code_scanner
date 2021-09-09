@@ -13,10 +13,6 @@ from time import perf_counter
 from contextlib import contextmanager
 
 
-class Errors:
-    NOT_44_PAGES = 100
-
-
 def scan_qr_codes(image, deep_search=False):
     width, height = image.size
 
@@ -43,11 +39,6 @@ def scan_qr_codes(image, deep_search=False):
         if decoded_objects is not None and len(decoded_objects) > 0:
             for obj in decoded_objects:
                 return obj.data.decode("utf-8")
-        # else:
-            # if THRESHOLD is None and (pa) % 2 == 1:
-            # t += 1
-            # pil_image = Image.fromarray(bw_im)
-            # pil_image.save("/Users/nageshdhope/Downloads/tests/" + str(idx + 1) + "_" + file_name + ".jpg")
     return None
 
 
@@ -89,8 +80,7 @@ def catchtime() -> float:
 
 if __name__ == '__main__':
     args = get_args()
-    output_folder = isdir(args.output_folder if args.output_folder is not None else '')
-    deep_search = bool(args.deep_search)
+    output_folder = args.output_folder if isdir(args.output_folder if args.output_folder is not None else '') else None
     if output_folder is None:
         print("output_folder not provided, to save unrecognized file use -o or --output-folder option")
     with catchtime() as t:

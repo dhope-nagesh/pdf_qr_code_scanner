@@ -1,7 +1,12 @@
+# Install
+```bash
+pip install -r requirements.txt
+```
+
 # Help
 
 ```bash
-$ python main.py --help                                                                                                  (kind-kind/default)
+$ python main.py --help
 usage: main.py [-h] -i INPUT_FOLDER [-o OUTPUT_FOLDER] [-d]
 
 Scan pdfs
